@@ -1,2 +1,18 @@
 # oracle_hacks
 commands to save
+
+Get recents operations of table
+'''
+SELECT VERSIONS_STARTSCN
+     , VERSIONS_STARTTIME
+     , VERSIONS_ENDSCN
+     , VERSIONS_ENDTIME
+     , VERSIONS_XID   
+     , CASE VERSIONS_OPERATION 
+            WHEN 'D' THEN 'DELETE' 
+            WHEN 'U' THEN 'UPDATE'
+            WHEN 'I' THEN 'INSERT'
+       END AS VERSIONS_OPERATION 
+     , APAGAR.*
+  FROM ETL.APAGAR VERSIONS BETWEEN TIMESTAMP MINVALUE AND MAXVALUE
+'''
