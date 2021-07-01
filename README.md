@@ -37,3 +37,10 @@ END;
 SELECT * FROM <owner>.<table_name>;
 
 ```
+
+### Last queue
+```
+SELECT *
+  FROM V$SQL 
+ ORDER BY FIRST_LOAD_TIME DESC
+```
