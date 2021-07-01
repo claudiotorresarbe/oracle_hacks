@@ -16,10 +16,18 @@ SELECT VERSIONS_STARTSCN
   FROM <owner>.<table_name> VERSIONS BETWEEN TIMESTAMP MINVALUE AND MAXVALUE
 ```
 
-### back in time
+### Easy method to back in the time
+```
+#data after
+SELECT * FROM <owner>.<table_name>;
+#data before
+SELECT * FROM <owner>.<table_name> AS OF TIMESTAMP(TO_DATE('01/jul/2021 10:00:28','DD/MM/YYYY HH24:MI:SS'))
+```
+
+### Other method to back in the time
 ```
 #data after change
-SELECT * FROM <owner>.<table_name> ;
+SELECT * FROM <owner>.<table_name>;
 /
 BEGIN
 DBMS_FLASHBACK.ENABLE_AT_TIME(TO_DATE('30/06/2021 17:04:28','DD/MM/YYYY HH24:MI:SS'));
