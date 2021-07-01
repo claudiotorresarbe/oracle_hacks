@@ -1,7 +1,7 @@
 # oracle_hacks
-##commands to save
+## commands to save
 
-###Get recents operations of table
+### Get recents operations of table
 ```
 SELECT VERSIONS_STARTSCN
      , VERSIONS_STARTTIME
