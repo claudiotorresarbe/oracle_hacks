@@ -13,6 +13,20 @@ SELECT VERSIONS_STARTSCN
             WHEN 'U' THEN 'UPDATE'
             WHEN 'I' THEN 'INSERT'
        END AS VERSIONS_OPERATION 
-     , APAGAR.*
-  FROM ETL.APAGAR VERSIONS BETWEEN TIMESTAMP MINVALUE AND MAXVALUE
+     , <table_name>.*
+  FROM <owner>.<table_name> VERSIONS BETWEEN TIMESTAMP MINVALUE AND MAXVALUE
+```
+
+### back in time
+```
+#data after change
+SELECT * FROM <owner>.<table_name> ;
+/
+BEGIN
+DBMS_FLASHBACK.ENABLE_AT_TIME(TO_DATE('30/06/2021 17:04:28','DD/MM/YYYY HH24:MI:SS'));
+END;
+/
+#data before change
+SELECT * FROM <owner>.<table_name>;
+
 ```
