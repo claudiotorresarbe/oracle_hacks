@@ -1,4 +1,4 @@
-# oracle_hacks ## - commands to save
+# oracle_hacks - commands to save
 
 ### Get recents operations of table
 ```
